@@ -1,0 +1,252 @@
+﻿<Window x:Class="kornyakov14.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kornyakov14"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0"
+              Grid.ColumnSpan="4">
+            <MenuItem Header="Меню"  
+                      Height="20" 
+                      Width="68" >
+                <MenuItem Header="Справка"
+                          x:Name="Infa"
+                          Click="Infa_Click">
+                </MenuItem>
+
+                <Separator/>
+
+                <MenuItem Header="Выход"
+                          x:Name="Exit"
+                          Click="Exit_Click">
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <ToolBar Grid.Row="1"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="2">
+            <Button x:Name="Clear"
+                    Content="Очистить"
+                    Click="Clear_Click"/>
+            <Separator/>
+            <Button x:Name="Save"
+                    Content="Сохранить"
+                    Click="Save_Click"/>
+            <Separator/>
+            <Button x:Name="Open"
+                    Content="Открыть"
+                    Click="Open_Click"/>
+
+            <Separator/>
+
+            <Button Content="Параметры"
+                    Click="btnPr_Click"/>
+        </ToolBar>
+
+        <GroupBox Header="Исходные данные"
+                  Grid.Row="2"
+                  Grid.ColumnSpan="2"
+                  Margin="10, 0, 10, 0"
+                  Height="210"
+                  Width="560"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+            <GroupBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Сохранить"/>
+                    <MenuItem Header="Открыть"/>
+                </ContextMenu>
+            </GroupBox.ContextMenu>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <DataGrid x:Name="Matrica"  
+                          Margin="5, 10, 10,10"
+                          Grid.RowSpan="4"
+                          Width="250"
+                          Height="160"
+                          GotFocus="Matrica_GotFocus"
+                          PreparingCellForEdit="Matrica_PreparingCellForEdit"
+                          PreviewTextInput="Matrica_PreviewTextInput"/>
+
+                <Label Content="Кол cтрок"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       VerticalAlignment="Center"
+                       Margin="5"
+                       Height="30"
+                       Width="120"/>
+                <TextBox x:Name="Rows"
+                         Grid.Row="0"
+                         Grid.Column="2"
+                         Margin="5"
+                         Height="30"
+                         Width="120"
+                         ToolTip="Количесво строк в таблице > 0"/>
+
+                <Label Content="Кол столбцов"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       VerticalAlignment="Center"
+                       Margin="5"
+                       Height="30"
+                       Width="120"/>
+                <TextBox x:Name="Columns"
+                         Grid.Row="1"
+                         Grid.Column="2"
+                         Margin="5"
+                         Height="30"
+                         Width="120"
+                         ToolTip="Количесво столбцов в таблице > 0"/>
+
+                <Label Content="Мин значение"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       VerticalAlignment="Center"
+                       Margin="5"
+                       Height="30"
+                       Width="120"/>
+                <TextBox x:Name="MinZnach"
+                         Grid.Row="2"
+                         Grid.Column="2"
+                         Margin="5"
+                         Height="30"
+                         Width="120"
+                         ToolTip="Минимальное значение для деапазона"/>
+                <Label Content="Макс значение"
+                       Grid.Row="3"
+                       Grid.Column="1"
+                       VerticalAlignment="Center"
+                       Margin="5"
+                       Height="30"
+                       Width="120"/>
+                <TextBox x:Name="MaxZnach"
+                         Grid.Row="4"
+                         Grid.Column="2"
+                         Margin="5"
+                         Height="30"
+                         Width="120"
+                         ToolTip="Максимальное значение для деапазона"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Результат"
+                  Grid.Row="3"
+                  Margin="10, 0, 10, 10"
+                  Grid.ColumnSpan="2"
+                  Height="100"
+                  Width="560"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+            <GroupBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Сохранить"/>
+                    <MenuItem Header="Открыть"/>
+                </ContextMenu>
+            </GroupBox.ContextMenu>
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="ResultRow"
+                         Grid.Row="0"
+                         Grid.Column="0"
+                         Margin="5"
+                         IsReadOnly="True"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         TextAlignment="Center"
+                         Height="25"
+                         Width="260"
+                         ToolTip="Строка в которой находится нужное число"/>
+
+                <TextBox x:Name="ResultColumn"
+                         Grid.Row="2"
+                         Grid.Column="0"
+                         Margin="5"
+                         IsReadOnly="True"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         TextAlignment="Center"
+                         Height="25"
+                         Width="260"
+                         ToolTip="Колонка в которой находится нужное число"/>
+
+                <Button x:Name="Rechenie"
+                        Content="Рассчитать"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Margin="10, 5"
+                        Click="Rechenie_Click"
+                        ToolTip="Найти координаты значения, близкого к среднему"/>
+                <Button x:Name="Zapolniti"
+                        Content="Заполнить"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="10, 5"
+                        Click="Zapolniti_Click"
+                        ToolTip="Заполнить таблицу"
+                        IsDefault="True"/>
+            </Grid>
+        </GroupBox>
+
+        <StatusBar Grid.Row="4"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Margin="10, 5">
+            <Label 
+                Content="Размер таблицы" 
+                Height="25" />
+            <TextBox
+                x:Name="TableSize"
+                Width="88"
+                IsReadOnly="True"
+                TextAlignment="Center"/>
+
+            <Label 
+                Content="Номер выбранной ячейки" 
+                Height="30" />
+            <TextBox
+                x:Name="Number"
+                Width="88"
+                IsReadOnly="True"
+                TextAlignment="Center" />
+        </StatusBar>
+    </Grid>
+</Window>

@@ -1,0 +1,96 @@
+﻿<Window x:Class="kornyakov14.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kornyakov14"
+        mc:Ignorable="d"
+        Title="Параметры" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Кол cтрок"
+        Grid.Row="0"
+        Grid.Column="0"
+        VerticalAlignment="Center"
+        Margin="5"
+        Height="30"
+        Width="120"/>
+
+        <TextBox x:Name="Rows1"
+          Grid.Row="0"
+          Grid.Column="2"
+          Margin="5"
+          Height="30"
+          Width="120"
+          ToolTip="Количесво строк в таблице > 0"/>
+
+        <Label Content="Кол столбцов"
+        Grid.Row="1"
+        Grid.Column="0"
+        VerticalAlignment="Center"
+        Margin="5"
+        Height="30"
+        Width="120"/>
+
+        <TextBox x:Name="Columns1"
+          Grid.Row="1"
+          Grid.Column="2"
+          Margin="5"
+          Height="30"
+          Width="120"
+          ToolTip="Количесво столбцов в таблице > 0"/>
+
+        <Label Content="Мин значение"
+        Grid.Row="2"
+        Grid.Column="0"
+        VerticalAlignment="Center"
+        Margin="5"
+        Height="30"
+        Width="120"/>
+
+        <TextBox x:Name="MinZnach1"
+          Grid.Row="2"
+          Grid.Column="2"
+          Margin="5"
+          Height="30"
+          Width="120"
+          ToolTip="Минимальное значение для деапазона"/>
+
+        <Label Content="Макс значение"
+        Grid.Row="3"
+        Grid.Column="0"
+        VerticalAlignment="Center"
+        Margin="5"
+        Height="30"
+        Width="120"/>
+
+        <TextBox x:Name="MaxZnach1"
+          Grid.Row="3"
+          Grid.Column="2"
+          Margin="5"
+          Height="30"
+          Width="120"
+          ToolTip="Максимальное значение для деапазона"/>
+
+        <Button x:Name="Zap"
+         Content="Заполнить"
+         Grid.Row="4"
+         Grid.Column="0"
+         Grid.ColumnSpan="2"
+         Click="Zap_Click"
+         ToolTip="Заполнить таблицу"
+         IsDefault="True"/>
+    </Grid>
+</Window>
